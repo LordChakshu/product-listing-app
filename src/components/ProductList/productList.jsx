@@ -5,9 +5,9 @@ import styles from "./ProductList.module.css";
 import SearchBar from "../SearchBar/searchBar";
 import Filters from "../Filters/Filters";
 
-const ProductList = ({ onProductsLoad }) => {
+const ProductList = ({onProductsLoad}) => {
   const [allProducts, setAllProducts] = useState([]);
-  const [filteredProducts,setFilteredProducts]=useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const [category, setCategory] = useState("All");
@@ -19,7 +19,7 @@ const ProductList = ({ onProductsLoad }) => {
       const data = await fetchProducts();
       setAllProducts(data);
       setFilteredProducts(data);
-      onProductsLoad(data); 
+      onProductsLoad(data);
       setLoading(false);
     };
     getProducts();
@@ -62,15 +62,19 @@ const ProductList = ({ onProductsLoad }) => {
 
   return (
     <div className={styles.container}>
-      <SearchBar onSearch={handleSearch} />
-      <Filters
-        category={category}
-        setCategory={setCategory}
-        priceRange={priceRange}
-        setPriceRange={setPriceRange}
-        rating={rating}
-        setRating={setRating}
-      />
+      <div className={styles.searchBar}>
+        <SearchBar onSearch={handleSearch} />
+      </div>
+      <div className={styles.filter}>
+        <Filters
+          category={category}
+          setCategory={setCategory}
+          priceRange={priceRange}
+          setPriceRange={setPriceRange}
+          rating={rating}
+          setRating={setRating}
+        />
+      </div>
       {filteredProducts.length === 0 ? (
         <p>No products found.</p>
       ) : (
