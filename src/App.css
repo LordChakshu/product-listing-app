@@ -1,0 +1,51 @@
+/* Global font */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #eeaeca;
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 0.87) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+  color: #333;
+}
+
+.nav-tabs {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #fafafa;
+}
+
+.tab-link {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px 8px 0 0;
+  color: #555;
+  transition: all 0.2s ease-in-out;
+  font-weight: 500;
+}
+
+.tab-link:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.tab-link.active {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-bottom: 1px solid #fff;
+  color: #000;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #666;
+  margin-top: 2rem;
+}
