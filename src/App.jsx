@@ -3,6 +3,7 @@ import './App.css'
 import { FavouritesProvider } from './context/FavouritesContext'
 import { Link, Route, Routes, useLocation } from 'react-router-dom';
 import ProductList from './components/ProductList/productList'
+import Error404 from './components/404/404';
 
 const Favourites = lazy(() => import("../src/components/Favourites/Favourites"));
 
@@ -23,6 +24,7 @@ function App() {
           <Routes>
             <Route path="/" element={<ProductList onProductsLoad={setAllProducts}/>} />
             <Route path="/favourites" element={<Favourites allProducts={allProducts}/>} />
+            <Route path="*" element={<Error404 />} />
           </Routes>
         </Suspense>
       </FavouritesProvider>
