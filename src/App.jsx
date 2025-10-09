@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <h1>Product Listing App</h1>
-       <Home/>;
+       <Home/>
     </>
   )
 }
