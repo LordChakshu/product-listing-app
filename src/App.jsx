@@ -22,7 +22,7 @@ function App() {
 
         <Suspense fallback={<div className='loading'>Loading...</div>}>
           <Routes>
-            <Route path="/" element={<ProductList onProductsLoad={setAllProducts}/>} />
+            <Route path="/" element={<ProductList allProducts={allProducts} setAllProducts={setAllProducts}/>} />
             <Route path="/favourites" element={<Favourites allProducts={allProducts}/>} />
             <Route path="*" element={<Error404 />} />
           </Routes>
