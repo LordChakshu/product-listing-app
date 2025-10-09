@@ -1,51 +1,51 @@
 Project Overview
 
-This web app fetches product data from FakeStoreAPI and displays it in a clean and responsive layout. Users can:
+  This web app fetches product data from FakeStoreAPI and displays it in a clean and responsive layout. Users can:
 
-Browse all products
+  Browse all products
 
-Search products by name/title
+  Search products by name/title
 
-Sort products (by price or name)
+  Sort products (by price or name)
 
-Favorite/unfavorite products
+  Favorite/unfavorite products
 
-View favorite products separately
+  View favorite products separately
 
 Features Implemented ✅
 
 Core Features (Mandatory)
 
-Feature Status
-Display Items in table/grid format ✅ Completed
-Search products by title or name ✅ Completed
-Sorting (Price, category, star rating) ✅ Completed
-Favorite/Like functionality ✅ Completed
-Favorites View / Section ✅ Completed
+  Feature Status
+  Display Items in table/grid format ✅ Completed
+  Search products by title or name ✅ Completed
+  Sorting (Price, category, star rating) ✅ Completed
+  Favorite/Like functionality ✅ Completed
+  Favorites View / Section ✅ Completed
 
 
 Bonus Features (Optional)
 
 Feature Status
-404 page for routing 
-Routing (React Router) ✅ Completed
-Responsive Design ✅ Completed (Mobile Optimized Partially)
+  404 page for routing 
+  Routing (React Router) ✅ Completed
+  Responsive Design ✅ Completed (Mobile Optimized Partially)
 
 Tech Stack
 
-Framework: React (Functional Components + Hooks)
+->Framework: React (Functional Components + Hooks)
 
-Language: JavaScript (or TypeScript if using TS)
+->Language: JavaScript (or TypeScript if using TS)
 
-State Management: Context API
+->State Management: Context API
 
-Styling: CSS Modules
+->Styling: CSS Modules
 
-API: FakeStoreAPI
+->API: FakeStoreAPI
 
-Tools: Vite / Create React App
+->Tools: Vite / Create React App
 
-Folder Structure
+->Folder Structure
 src/
 │
 ├─ api/
@@ -53,9 +53,9 @@ src/
 ├─ components/
 │ ├─ ProductCard/ # Product card component
 │ ├─ ProductList/ # Product listing & search
-│ ├─ ProductSkeleton/ # Skeleton loading placeholder
+│ ├─ Filters
+| |- Favourites
 │ ├─ SearchBar/ # Search input component
-│ └─ ErrorBoundary/ # Error UI fallback component
 ├─ context/
 │ └─ FavouritesContext.js # Context API for favorites
 ├─ assets/ # Images/icons
@@ -102,14 +102,3 @@ Favorite Products:
 Users can toggle favorites using a heart button on each product card.
 
 Favorite products are stored using Context API and displayed in a separate favorites view.
-
-
-Error Handling:
-
-API errors show a friendly error message.
-
-Future Improvements / Bonus Features
-
-Add unit tests using Jest and React Testing Library
-
-pagination to handle larger datasets
