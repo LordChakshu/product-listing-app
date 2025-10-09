@@ -1,16 +1,115 @@
-# React + Vite
+Project Overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This web app fetches product data from FakeStoreAPI and displays it in a clean and responsive layout. Users can:
 
-Currently, two official plugins are available:
+Browse all products
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Search products by name/title
 
-## React Compiler
+Sort products (by price or name)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Favorite/unfavorite products
 
-## Expanding the ESLint configuration
+View favorite products separately
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Features Implemented ✅
+
+Core Features (Mandatory)
+
+Feature Status
+Display Items in table/grid format ✅ Completed
+Search products by title or name ✅ Completed
+Sorting (Price, category, star rating) ✅ Completed
+Favorite/Like functionality ✅ Completed
+Favorites View / Section ✅ Completed
+
+
+Bonus Features (Optional)
+
+Feature Status
+404 page for routing 
+Routing (React Router) ✅ Completed
+Responsive Design ✅ Completed (Mobile Optimized Partially)
+
+Tech Stack
+
+Framework: React (Functional Components + Hooks)
+
+Language: JavaScript (or TypeScript if using TS)
+
+State Management: Context API
+
+Styling: CSS Modules
+
+API: FakeStoreAPI
+
+Tools: Vite / Create React App
+
+Folder Structure
+src/
+│
+├─ api/
+│ └─ fetchProducts.js # API call function
+├─ components/
+│ ├─ ProductCard/ # Product card component
+│ ├─ ProductList/ # Product listing & search
+│ ├─ ProductSkeleton/ # Skeleton loading placeholder
+│ ├─ SearchBar/ # Search input component
+│ └─ ErrorBoundary/ # Error UI fallback component
+├─ context/
+│ └─ FavouritesContext.js # Context API for favorites
+├─ assets/ # Images/icons
+├─ App.js
+├─ index.js
+└─ styles/
+└─ CSS module files
+
+Getting Started
+
+Prerequisites
+
+Node.js >= 18.x
+
+npm >= 9.x or yarn >= 1.x
+
+Clone the Repository
+
+git clone https://github.com/yourusername/product-listing-app.git
+cd product-listing-app
+
+Install Dependencies
+npm install
+
+Run the Application
+npm run dev
+
+How It Works
+
+Fetching Products:
+
+Products are fetched from FakeStoreAPI using fetchProducts() API helper.
+
+Search Functionality:
+
+Users can type in the search bar to filter products by title dynamically.
+
+Sorting:
+
+Products can be filter by price or star rating using the sort dropdown.
+
+Favorite Products:
+
+Users can toggle favorites using a heart button on each product card.
+
+Favorite products are stored using Context API and displayed in a separate favorites view.
+
+
+Error Handling:
+
+API errors show a friendly error message.
+
+Future Improvements / Bonus Features
+
+Add unit tests using Jest and React Testing Library
+
+pagination to handle larger datasets
