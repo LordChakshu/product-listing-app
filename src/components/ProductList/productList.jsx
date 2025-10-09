@@ -3,10 +3,9 @@ import { fetchProducts } from "../../api/fetchProducts";
 import ProductCard from "../ProductCard/productCard";
 import styles from "./ProductList.module.css";
 import SearchBar from "../SearchBar/searchBar";
-import SortOptions from "../Filters/Filters";
+import SortOptions from "../Filters/Filters"
 
-const ProductList = ({ onProductsLoad }) => {
-  const [allProducts, setAllProducts] = useState([]);
+const ProductList = ({ allProducts, setAllProducts }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
@@ -15,34 +14,29 @@ const ProductList = ({ onProductsLoad }) => {
 
   useEffect(() => {
     const getProducts = async () => {
-      const data = await fetchProducts();
-      setAllProducts(data);
-      setFilteredProducts(data)
-      onProductsLoad(data);
+      if (allProducts.length === 0) {
+        const data = await fetchProducts();
+        setAllProducts(data);
+      }
       setLoading(false);
     };
     getProducts();
-  }, [onProductsLoad]);
+  }, [allProducts, setAllProducts]);
 
-   useEffect(() => {
+  useEffect(() => {
     let updated = [...allProducts];
 
-    // Apply search
     if (searchQuery.trim() !== "") {
       updated = updated.filter((p) =>
         p.title.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
 
-    // Apply Price Sort
     if (priceSort) {
       updated.sort((a, b) =>
         priceSort === "price-asc" ? a.price - b.price : b.price - a.price
       );
-    }
-
-    // Apply Rating Sort
-    if (ratingSort) {
+    } else if (ratingSort) {
       updated.sort((a, b) =>
         ratingSort === "rating-asc"
           ? a.rating.rate - b.rating.rate
@@ -53,7 +47,6 @@ const ProductList = ({ onProductsLoad }) => {
     setFilteredProducts(updated);
   }, [searchQuery, priceSort, ratingSort, allProducts]);
 
-  // 🔹 Handle Search change
   const handleSearch = (query) => {
     setSearchQuery(query);
     if (query.trim() === "") {
@@ -81,11 +74,11 @@ const ProductList = ({ onProductsLoad }) => {
       </div>
       <div className={styles.filter}>
         <SortOptions
-        onPriceSortChange={handlePriceSortChange}
-        onRatingSortChange={handleRatingSortChange}
-        priceSort={priceSort}
-        ratingSort={ratingSort}
-      />
+          onPriceSortChange={handlePriceSortChange}
+          onRatingSortChange={handleRatingSortChange}
+          priceSort={priceSort}
+          ratingSort={ratingSort}
+        />
       </div>
       {filteredProducts.length === 0 ? (
         <p>No products found.</p>
