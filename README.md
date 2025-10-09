@@ -1,104 +1,95 @@
-Project Overview
+🛍️ Product Listing Web App
 
-  This web app fetches product data from FakeStoreAPI and displays it in a clean and responsive layout. Users can:
+A sleek, responsive React application that fetches products from FakeStoreAPI and provides an interactive browsing experience — including search, sorting, favorites, and routing.
 
-  Browse all products
+Built with modern React practices — Context API, and modular CSS styling.
 
-  Search products by name/title
+# 🛍️ Product Listing Web App
 
-  Sort products (by price or name)
+A sleek and responsive **React application** that fetches products from [FakeStoreAPI](https://fakestoreapi.com/) and allows users to browse, search, sort, and favorite products — all in an elegant, modular UI.
 
-  Favorite/unfavorite products
+Built with **modern React practices (Hooks + Context API)** and **CSS Modules** for maintainable styling.
 
-  View favorite products separately
+---
 
-Features Implemented ✅
+## ✨ Features Overview
 
-Core Features (Mandatory)
+### 🧩 Core Functionality
+| Feature | Status | Description |
+|----------|---------|-------------|
+| 🖼️ **Product Display** | ✅ | Displays all products in a clean, responsive grid layout |
+| 🔍 **Search Products** | ✅ | Search dynamically by product title or name |
+| ↕️ **Sorting** | ✅ | Sort by **price**, **star rating** |
+| ❤️ **Favorite Products** | ✅ | Add/remove favorites using a heart icon |
+| 💾 **Favorites View** | ✅ | View your favorite items on a separate page |
 
-  Feature Status
-  Display Items in table/grid format ✅ Completed
-  Search products by title or name ✅ Completed
-  Sorting (Price, category, star rating) ✅ Completed
-  Favorite/Like functionality ✅ Completed
-  Favorites View / Section ✅ Completed
+---
 
+### 🌟 Bonus Features
+| Feature | Status | Description |
+|----------|---------|-------------|
+| 🚫 **404 Page** | ✅ | Shown when a user visits an invalid route |
+| 🔄 **Routing** | ✅ | Implemented using **React Router** |
+| 📱 **Responsive Design** | ✅ (Partially Mobile Optimized) | Works smoothly on most devices |
 
-Bonus Features (Optional)
+---
 
-Feature Status
-  404 page for routing 
-  Routing (React Router) ✅ Completed
-  Responsive Design ✅ Completed (Mobile Optimized Partially)
+## 🧠 Tech Stack
 
-Tech Stack
+| Category | Tools / Libraries |
+|-----------|-------------------|
+| 🧩 **Framework** | React |
+| 💬 **Language** | JavaScript|
+| 🧠 **State Management** | Context API |
+| 🎨 **Styling** | CSS Modules |
+| 🌐 **API Source** | [FakeStoreAPI](https://fakestoreapi.com/) |
+| ⚙️ **Build Tool** | Vite / Create React App |
 
-->Framework: React (Functional Components + Hooks)
+---
 
-->Language: JavaScript (or TypeScript if using TS)
-
-->State Management: Context API
-
-->Styling: CSS Modules
-
-->API: FakeStoreAPI
-
-->Tools: Vite / Create React App
-
-->Folder Structure
+⚙️ Build Tool	Vite / Create React App
+🏗️ Folder Structure
 src/
 │
 ├─ api/
-│ └─ fetchProducts.js # API call function
+│   └─ fetchProducts.js           # API call function
+│
 ├─ components/
-│ ├─ ProductCard/ # Product card component
-│ ├─ ProductList/ # Product listing & search
-│ ├─ Filters
-| |- Favourites
-│ ├─ SearchBar/ # Search input component
+│   ├─ ProductCard/               # Product card component
+│   ├─ ProductList/               # Product listing + sorting + search
+│   ├─ Filters/                   # Sorting / filtering options
+│   ├─ Favourites/                # Favourites view
+│   └─ SearchBar/                 # Search input component
+│
 ├─ context/
-│ └─ FavouritesContext.js # Context API for favorites
-├─ assets/ # Images/icons
-├─ App.js
-├─ index.js
-└─ styles/
-└─ CSS module files
+│   └─ FavouritesContext.js       # Context API for managing favorites
+│
+├─ assets/                        # Icons and images
+│
+├─ App.js                         # Root component
+├─ index.js                       # React DOM entry point
+└─ styles/                        # CSS module files
 
-Getting Started
+⚙️ Getting Started
+📋 Prerequisites
 
-Prerequisites
+Ensure you have the following installed:
 
-Node.js >= 18.x
+Node.js ≥ 18.x
 
-npm >= 9.x or yarn >= 1.x
+npm ≥ 9.x (or yarn ≥ 1.x)
 
-Clone the Repository
-
+🚀 Setup Instructions
+# Clone the repository
 git clone https://github.com/yourusername/product-listing-app.git
 cd product-listing-app
 
-Install Dependencies
+# Install dependencies
 npm install
 
-Run the Application
+# Start the development server
 npm run dev
 
-How It Works
 
-Fetching Products:
-
-Products are fetched from FakeStoreAPI using fetchProducts() API helper.
-
-Search Functionality:
-
-Users can type in the search bar to filter products by title dynamically.
-
-Sorting:
-
-Products can be filter by price or star rating using the sort dropdown.
-
-Favorite Products:
-
-Users can toggle favorites using a heart button on each product card.
-
-Favorite products are stored using Context API and displayed in a separate favorites view.
+Now visit http://localhost:5173
+ (if using Vite) and enjoy 🎉
