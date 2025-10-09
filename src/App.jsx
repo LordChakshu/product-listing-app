@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import './App.css'
 import { FavouritesProvider } from './context/FavouritesContext'
 import { Link, Route, BrowserRouter , Routes } from 'react-router-dom';
@@ -7,6 +7,8 @@ import ProductList from './components/ProductList/productList'
 const Favourites = lazy(() => import("../src/components/Favourites/Favourites"));
 
 function App() {
+
+  const [allProducts, setAllProducts] = useState([]); //lifting state up(single source of truth)
 
   return (
     <>
@@ -19,8 +21,8 @@ function App() {
 
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
-            <Route path="/" element={<ProductList />} />
-            <Route path="/favourites" element={<Favourites />} />
+            <Route path="/" element={<ProductList onProductsLoad={setAllProducts}/>} />
+            <Route path="/favourites" element={<Favourites allProducts={allProducts}/>} />
           </Routes>
         </Suspense>
       </BrowserRouter >
