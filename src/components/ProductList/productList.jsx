@@ -5,7 +5,7 @@ import styles from "./ProductList.module.css";
 import SearchBar from "../SearchBar/searchBar";
 import Filters from "../Filters/Filters";
 
-const ProductList = () => {
+const ProductList = ({ onProductsLoad }) => {
   const [allProducts, setAllProducts] = useState([]);
   const [filteredProducts,setFilteredProducts]=useState([]);
   const [loading, setLoading] = useState(true);
@@ -19,10 +19,11 @@ const ProductList = () => {
       const data = await fetchProducts();
       setAllProducts(data);
       setFilteredProducts(data);
+      onProductsLoad(data); 
       setLoading(false);
     };
     getProducts();
-  }, []);
+  }, [onProductsLoad]);
 
   useEffect(() => {
     let result = allProducts;

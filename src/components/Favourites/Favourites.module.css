@@ -1,0 +1,8 @@
+/* ProductList.module.css */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  padding: 10px;
+  justify-content: center; /* center cards if fewer items on large screen */
+}
