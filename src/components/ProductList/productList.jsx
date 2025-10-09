@@ -3,59 +3,73 @@ import { fetchProducts } from "../../api/fetchProducts";
 import ProductCard from "../ProductCard/productCard";
 import styles from "./ProductList.module.css";
 import SearchBar from "../SearchBar/searchBar";
-import Filters from "../Filters/Filters";
+import SortOptions from "../Filters/Filters";
 
-const ProductList = ({onProductsLoad}) => {
+const ProductList = ({ onProductsLoad }) => {
   const [allProducts, setAllProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  const [category, setCategory] = useState("All");
-  const [priceRange, setPriceRange] = useState([0, Infinity]);
-  const [rating, setRating] = useState(0);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [priceSort, setPriceSort] = useState("");
+  const [ratingSort, setRatingSort] = useState("");
 
   useEffect(() => {
     const getProducts = async () => {
       const data = await fetchProducts();
       setAllProducts(data);
-      setFilteredProducts(data);
+      setFilteredProducts(data)
       onProductsLoad(data);
       setLoading(false);
     };
     getProducts();
   }, [onProductsLoad]);
 
-  useEffect(() => {
-    let result = allProducts;
+   useEffect(() => {
+    let updated = [...allProducts];
 
-    // Category
-    if (category !== "All") {
-      result = result.filter((p) => p.category === category);
+    // Apply search
+    if (searchQuery.trim() !== "") {
+      updated = updated.filter((p) =>
+        p.title.toLowerCase().includes(searchQuery.toLowerCase())
+      );
     }
 
-    // Price
-    result = result.filter(
-      (p) => p.price >= priceRange[0] && p.price <= priceRange[1]
-    );
-
-    // Rating
-    if (rating > 0) {
-      result = result.filter((p) => p.rating.rate >= rating);
+    // Apply Price Sort
+    if (priceSort) {
+      updated.sort((a, b) =>
+        priceSort === "price-asc" ? a.price - b.price : b.price - a.price
+      );
     }
 
-    setFilteredProducts(result);
-  }, [allProducts, category, priceRange, rating]);
+    // Apply Rating Sort
+    if (ratingSort) {
+      updated.sort((a, b) =>
+        ratingSort === "rating-asc"
+          ? a.rating.rate - b.rating.rate
+          : b.rating.rate - a.rating.rate
+      );
+    }
 
+    setFilteredProducts(updated);
+  }, [searchQuery, priceSort, ratingSort, allProducts]);
+
+  // 🔹 Handle Search change
   const handleSearch = (query) => {
-    if (!query) {
-      setFilteredProducts(allProducts);
-      return;
+    setSearchQuery(query);
+    if (query.trim() === "") {
+      setPriceSort("");
+      setRatingSort("");
     }
+  };
 
-    const filtered = allProducts.filter((product) =>
-      product.title.toLowerCase().includes(query.toLowerCase())
-    );
-    setFilteredProducts(filtered);
+  const handlePriceSortChange = (value) => {
+    setPriceSort(value);
+    if (value) setRatingSort("");
+  };
+
+  const handleRatingSortChange = (value) => {
+    setRatingSort(value);
+    if (value) setPriceSort("");
   };
 
   if (loading) return <p className={styles.loading}>Loading...</p>
@@ -66,14 +80,12 @@ const ProductList = ({onProductsLoad}) => {
         <SearchBar onSearch={handleSearch} />
       </div>
       <div className={styles.filter}>
-        <Filters
-          category={category}
-          setCategory={setCategory}
-          priceRange={priceRange}
-          setPriceRange={setPriceRange}
-          rating={rating}
-          setRating={setRating}
-        />
+        <SortOptions
+        onPriceSortChange={handlePriceSortChange}
+        onRatingSortChange={handleRatingSortChange}
+        priceSort={priceSort}
+        ratingSort={ratingSort}
+      />
       </div>
       {filteredProducts.length === 0 ? (
         <p>No products found.</p>

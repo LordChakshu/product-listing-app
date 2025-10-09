@@ -6,6 +6,12 @@
   justify-content: center;
 }
 
+.sortGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .filtersContainer select {
   padding: 0.5rem 1rem;
   border-radius: 8px;
